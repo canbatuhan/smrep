@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <assert.h>
-#include "../lib/structs.h"
+#include "../lib/struct.h"
 
 #define VAR_ID_LIMIT      0xFF
 #define EVENT_ID_LIMIT    0b11111
@@ -11,8 +11,8 @@
 /**
  * @brief Initializes a variable
  * 
- * @param identifier     ID of the variable (6-bit)
- * @param value          Value of the variable (10-bit)
+ * @param identifier     ID of the variable (8-bit)
+ * @param value          Value of the variable (16-bit)
  * @return machine_var : Variable struct
  */
 machine_var init_variable(unsigned identifier, unsigned value) {
@@ -26,8 +26,8 @@ machine_var init_variable(unsigned identifier, unsigned value) {
 /**
  * @brief Initializes an event
  * 
- * @param command          Command type (2-bit)
- * @param identifier       ID of the event (6-bit)
+ * @param command          Command type (3-bit)
+ * @param identifier       ID of the event (5-bit)
  * @return machine_event : Event struct
  */
 machine_event init_event(unsigned command, unsigned identifier) {
