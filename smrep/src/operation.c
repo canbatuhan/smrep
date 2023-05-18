@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "../lib/machine.h"
 
+#define VAR_ID_SIZE 8
+
 /**
  * @brief Sets a variable
  * 
@@ -10,12 +12,29 @@
  */
 unsigned __set(state_machine * machine, machine_var variable) {
     machine_var * var_ptr = __get_var_ptr(machine, variable.data.identifier);
-    if (var_ptr != NULL) { // Update variable
-        var_ptr->data.value = variable.data.value;
+    if (var_ptr != NULL) { // Variable already exists
+        return SMREP_FAILURE;
     } else { // Create variable
         __add_state_entry(machine, variable);
+        return SMREP_SUCCESS;
     }
-    return SMREP_SUCCESS;
+}
+
+/**
+ * @brief Sets a variable
+ * 
+ * @param machine     Pointer to the state machine
+ * @param variable    Variable including ID and value
+ * @return unsigned : Acknowledgement 
+ */
+unsigned __put(state_machine * machine, machine_var variable) {
+    machine_var * var_ptr = __get_var_ptr(machine, variable.data.identifier);
+    if (var_ptr != NULL) { // Update variable
+        var_ptr->data.value = variable.data.value;
+        return SMREP_SUCCESS;
+    } else { // Variable not found
+        return SMREP_FAILURE;
+    }
 }
 
 /**
@@ -66,6 +85,31 @@ unsigned __get(state_machine * machine, unsigned identifier) {
     } else { // Variable not found
         return SMREP_FAILURE;
     }
+}
+
+/**
+ * @brief Returns all the keys stored in the machine
+ * 
+ * @param machine    : Pointer to the state machine
+ * @return unsigned* : Array of keys
+ */
+/*unsigned * __keys(state_machine * machine) {
+    unsigned * keys = (unsigned *) malloc(VAR_ID_SIZE * machine->state_size);
+    unsigned idx;
+    for (idx=0; idx<machine->state_size; idx++) {
+        keys[idx] = machine->state[idx].data.identifier;
+    }
+    return keys;
+}*/
+
+/**
+ * @brief Return the number of key-value pairs
+ * 
+ * @param machine   : Pointer to the state machine
+ * @return unsigned : Number of key-value pairs
+ */
+unsigned __size(state_machine * machine) {
+    return machine->state_size;
 }
 
 /**

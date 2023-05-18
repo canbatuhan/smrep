@@ -8,7 +8,7 @@
  * @brief Gets the pointer of a variable by its ID
  * 
  * @param machine         Pointer to the state machine
- * @param identifier      ID of the variable (6-bit)
+ * @param identifier      ID of the variable (8-bit)
  * @return machine_var* : Pointer to the variable
  */
 machine_var * __get_var_ptr(state_machine * machine, unsigned identifier) {
@@ -27,7 +27,7 @@ machine_var * __get_var_ptr(state_machine * machine, unsigned identifier) {
  * @brief Gets the pointer of a transition by the event ID
  * 
  * @param machine           Pointer to the state machine
- * @param identifier        ID of the event (6-bit)
+ * @param identifier        ID of the event (8-bit)
  * @return machine_trans* : Pointer to the transition
  */
 machine_trans * __get_trans_ptr(state_machine * machine, unsigned identifier) {
@@ -60,7 +60,7 @@ void __add_state_entry(state_machine * machine, machine_var variable) {
  * @brief Deletes an entry from the state by its ID
  * 
  * @param machine    Pointer to the state machine
- * @param identifier ID of the variable (6-bit)
+ * @param identifier ID of the variable (8-bit)
  */
 void __remove_state_entry(state_machine * machine, unsigned identifier) {
     unsigned short idx;

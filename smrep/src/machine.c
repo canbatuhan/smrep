@@ -48,11 +48,23 @@ machine_ack send(state_machine * machine, machine_msg message) {
         case SMREP_SET:
             ack =__set(machine, message.data.variable);
             break;
+        case SMREP_PUT:
+            ack =__put(machine, message.data.variable);
+            break;
+        case SMREP_INC:
+            ack = __inc(machine, message.data.variable.data.identifier);
+            break;
+        case SMREP_DEC:
+            ack = __dec(machine, message.data.variable.data.identifier);
+            break;
         case SMREP_GET:
             ack =__get(machine, message.data.variable.data.identifier);
             break;
-        case SMREP_INC:
-            ack = __inc(machine, message.data.variable);
+        /*case SMREP_KEYS:
+            ack =__keys(machine);
+            break;*/
+        case SMREP_SIZE:
+            ack =__size(machine);
             break;
         case SMREP_DEL:
             ack =__del(machine, message.data.variable.data.identifier);

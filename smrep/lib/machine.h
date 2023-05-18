@@ -22,15 +22,15 @@ void            __remove_state_entry(state_machine *, unsigned);
 
 /* Operation Functions: src/operation.c */
 
-unsigned  __set(state_machine *, machine_var);
-unsigned  __put(state_machine *, machine_var);
-unsigned  __inc(state_machine *, unsigned);
-unsigned  __dec(state_machine *, unsigned);
-unsigned  __get(state_machine *, unsigned);
-unsigned* __keys(state_machine *);
-unsigned  __size(state_machine *);
-unsigned  __del(state_machine *, unsigned);
-void *    __run(state_machine *, machine_event);
+unsigned   __set(state_machine *, machine_var);
+unsigned   __put(state_machine *, machine_var);
+unsigned   __inc(state_machine *, unsigned);
+unsigned   __dec(state_machine *, unsigned);
+unsigned   __get(state_machine *, unsigned);
+//unsigned * __keys(state_machine *);
+unsigned   __size(state_machine *);
+unsigned   __del(state_machine *, unsigned);
+void *     __run(state_machine *, machine_event);
 
 
 /* Machine Functions: src/machine.c */
