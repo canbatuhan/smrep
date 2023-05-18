@@ -1,0 +1,19 @@
+#ifndef SMREP_CONSTANTS_H
+#define SMREP_CONSTANTS_H
+
+#define SMREP_SUCCESS 0b0
+#define SMREP_FAILURE 0b1
+
+#define SMREP_SET  0b000
+#define SMREP_PUT  0b001
+#define SMREP_INC  0b010
+#define SMREP_DEC  0b011
+#define SMREP_GET  0b100
+#define SMREP_KEYS 0b101
+#define SMREP_SIZE 0b110
+#define SMREP_DEL  0b111
+
+#define SMREP_NULL_VAR   0xFF
+#define SMREP_NULL_EVENT 0b11111
+
+#endif
