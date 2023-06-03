@@ -49,6 +49,9 @@ machine_trans * __get_trans_ptr(state_machine * machine, unsigned identifier) {
  * @param variable Variable including ID and value
  */
 void __add_state_entry(state_machine * machine, machine_var variable) {
+    /** 
+     * @todo A more efficient dynamic allocation 
+     */
     if (machine->state_size < MAX_VAR_COUNT) {
         machine->state = realloc(machine->state, sizeof(machine_var)*(machine->state_size+1));
         machine->state[machine->state_size] = variable;
@@ -63,6 +66,9 @@ void __add_state_entry(state_machine * machine, machine_var variable) {
  * @param identifier ID of the variable (8-bit)
  */
 void __remove_state_entry(state_machine * machine, unsigned identifier) {
+    /** 
+     * @todo A more efficient dynamic allocation 
+     */
     unsigned short idx;
     for (idx=0; idx<machine->state_size; idx++) {
         if (identifier == machine->state[idx].data.identifier) {

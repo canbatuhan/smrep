@@ -21,7 +21,7 @@ typedef union transition  {
     unsigned alignment : 24;
     struct {
         machine_event event;
-        void *      (*callback)();
+        void *        (*callback)();
     } data;
 } machine_trans;
 

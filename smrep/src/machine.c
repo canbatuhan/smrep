@@ -26,6 +26,9 @@ state_machine init_machine() {
  * @param callback Callback to run during transition 
  */
 void set_transition(state_machine * machine, machine_event event, void * callback()) {
+    /** 
+     * @todo A more efficient dynamic allocation 
+     */
     if (machine->transitions_size < MAX_EVENT_COUNT) {
         machine->transitions = realloc(machine->transitions, sizeof(machine_trans)*(machine->transitions_size+1));
         machine->transitions[machine->transitions_size] = init_transition(event, callback);
